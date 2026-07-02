@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PharmaTrack Pro — Sales Field Platform</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230F5C57'/%3E%3Crect x='18' y='14' width='28' height='36' rx='18' fill='white'/%3E%3Crect x='18' y='14' width='14' height='36' rx='0' fill='%23E4692F'/%3E%3Crect x='32' y='14' width='14' height='36' rx='18' fill='%230F5C57'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="ptp-root">
+      <!-- ================= LOGIN SCREEN ================= -->
+      <div id="login-screen">
+        <div class="login-card">
+          <div class="login-brand">
+            <div class="capsule-mark"></div>
+            <h1>PharmaTrack Pro</h1>
+          </div>
+          <p class="login-sub">Professional sales field platform</p>
+
+          <div class="field">
+            <label><i class="fas fa-user fa-icon"></i> Username</label>
+            <input
+              id="login-name"
+              type="text"
+              placeholder="Enter your username"
+              value="admin"
+            />
+          </div>
+          <div class="field">
+            <label><i class="fas fa-lock fa-icon"></i> Password</label>
+            <input
+              id="login-pass"
+              type="password"
+              placeholder="Enter your password"
+              value="Admin001"
+            />
+          </div>
+
+          <button class="btn btn-primary" onclick="ptpLogin()">
+            <i class="fas fa-sign-in-alt"></i> Sign in
+          </button>
+
+          <div id="login-error" class="login-error">
+            Invalid credentials. Please try again.
+          </div>
+
+          <div class="login-hint">
+            <i class="fas fa-info-circle"></i>
+            <b>Demo credentials:</b> Any username · Password: <b>Admin001</b>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= APP SHELL ================= -->
+      <div id="app-shell">
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="sb-brand">
+            <div class="capsule-mark"></div>
+            <h1>PharmaTrack Pro</h1>
+          </div>
+
+          <button
+            class="nav-item active"
+            data-tab="tab-setup"
+            onclick="ptpShowTab('tab-setup')"
+          >
+            <i class="fas fa-clipboard-list nav-icon"></i>Visit Setup
+          </button>
+          <button
+            class="nav-item"
+            data-tab="tab-strategy"
+            onclick="ptpShowTab('tab-strategy')"
+          >
+            <i class="fas fa-bullseye nav-icon"></i>Engagement Strategy
+          </button>
+          <button
+            class="nav-item"
+            data-tab="tab-pricing"
+            onclick="ptpShowTab('tab-pricing')"
+          >
+            <i class="fas fa-tags nav-icon"></i>Product &amp; Pricing
+          </button>
+          <button
+            class="nav-item"
+            data-tab="tab-insights"
+            onclick="ptpShowTab('tab-insights')"
+          >
+            <i class="fas fa-chart-bar nav-icon"></i>Market Insights
+          </button>
+          <button
+            class="nav-item"
+            data-tab="tab-visit"
+            onclick="ptpShowTab('tab-visit')"
+          >
+            <i class="fas fa-pen-alt nav-icon"></i>Visit Execution
+          </button>
+          <button
+            class="nav-item"
+            data-tab="tab-dashboard"
+            onclick="ptpShowTab('tab-dashboard')"
+          >
+            <i class="fas fa-tachometer-alt nav-icon"></i>Performance
+          </button>
+          <button
+            class="nav-item"
+            data-tab="tab-map"
+            onclick="ptpShowTab('tab-map')"
+          >
+            <i class="fas fa-map-marked-alt nav-icon"></i>Territory Map
+          </button>
+          <button
+            class="nav-item"
+            data-tab="tab-reports"
+            onclick="ptpShowTab('tab-reports')"
+          >
+            <i class="fas fa-file-export nav-icon"></i>Reports
+          </button>
+
+          <div class="sb-foot">
+            <div class="sb-rep">Signed in as<b id="sb-rep-name">—</b></div>
+            <button class="logout-link" onclick="ptpLogout()">
+              <i class="fas fa-sign-out-alt"></i> Sign out
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+          <div class="topbar">
+            <h2 id="topbar-title">Visit Setup</h2>
+            <div
+              class="visit-chip"
+              id="active-visit-chip"
+              style="display: none"
+            >
+              <span class="badge-role"></span>
+              <span id="active-visit-label"></span>
+            </div>
+          </div>
+
+          <div class="content" id="main-content">
+            <!-- All tabs rendered by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="data/products.json.js"></script>
+    <script src="data/contacts.json.js"></script>
+    <script src="data/objections.json.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
