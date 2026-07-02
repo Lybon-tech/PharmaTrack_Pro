@@ -8,11 +8,11 @@ PharmaTrack Pro is a complete sales field application designed for pharmaceutica
 
 ## Features
 
-### 🔐 Login
+### Login
 - Secure login with fixed password: `Admin001`
 - Any username accepted for demo purposes
 
-### 📋 8 Core Tabs
+### 8 Core Tabs
 
 | Tab | Function |
 |-----|----------|
@@ -25,7 +25,7 @@ PharmaTrack Pro is a complete sales field application designed for pharmaceutica
 | **Territory Map** | Leaflet-based geo-mapping of all contacts |
 | **Reports** | CSV export + data reset |
 
-### 💊 SAHPRA-Registered Products
+### SAHPRA-Registered Products
 
 - **Adco Loperamide** (Adcock Ingram) — Anti-diarrheal
 - **Aspen Omeprazole** (Aspen Pharmacare) — PPI
@@ -47,4 +47,4 @@ PharmaTrack Pro is a complete sales field application designed for pharmaceutica
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/pharmatrack-pro.git
+git clone https://github.com/Lybon-tech/pharmatrack-pro.git
